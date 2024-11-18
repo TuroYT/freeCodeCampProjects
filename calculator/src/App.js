@@ -7,23 +7,38 @@ function App() {
   const [thereIsAResult, setThereIsAResult] = useState(false)
 
   const handleClick = (event) => {
-    let newChain = ''
-    
+    let newChain = '';
+    const value = event.target.innerHTML;
+
     if (thereIsAResult) {
-      newChain = "0"
-      setThereIsAResult(false)
+      if (!(['+', '-', '*', '/'].includes(value))) {
+        newChain = value === '.' ? '0.' : value;
+        setChain(newChain);
+      } else {
+        newChain = chain + value;
+        setChain(newChain);
+      }
+      setThereIsAResult(false);
+      return;
     }
 
-    if (chain === '0') {
-      setChain(event.target.innerHTML)
+    if (chain === '0' && value !== '.') {
+      setChain(value);
     } else {
-      if (!(chain.slice(-1) === '.')) {
-        setChain(chain + event.target.innerHTML);
+      const lastChar = chain.slice(-1);
+      if (['+', '*', '/'].includes(lastChar) && ['+', '*', '/'].includes(value)) {
+        setChain(chain.slice(0, -1) + value);
+      } else if (lastChar === '-' && ['+', '*', '/'].includes(value)) {
+        setChain(chain.slice(0, -2) + value);
+      } else {
+        const lastNumber = chain.split(/[\+\-\*\/]/).pop();
+        if (value === '.' && lastNumber.includes('.')) {
+          return;
+        }
+        setChain(chain + value);
       }
     }
-
-    
-  }
+  };
 
   const handleClear = () => {
     setChain('0')
