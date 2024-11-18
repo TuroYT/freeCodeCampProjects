@@ -1,0 +1,69 @@
+#numpad {
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+#numpad>button {
+  flex-grow: 1;
+  width: 33%;
+  height: 100px;
+}
+
+#calculator {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  justify-content: center;
+  margin-top: 10% ;
+  margin-bottom: 10%;
+  margin-left: 40%;
+  margin-right: 40%;
+  border-color: black;
+  border-width: 3px;
+  border-style:solid;
+
+}
+
+#align {
+  display: flex;
+  justify-content: space-between  ;
+}
+
+#clear {
+  height: 40px;
+}
+
+#operations{
+  display: flex;
+  flex-direction: column;
+}
+
+#operations>button {
+  height: 100%;
+  width: 80px;
+}
+
+#display {
+  text-align: end;
+  margin: 20px;
+}
+
+
+button {
+  position: relative;
+  color: white;
+  outline: 1px solid black;
+  border: none;
+  background: #4d4d4d;
+  font-family: Share Tech Mono, monospace;
+  font-size: 20px;
+  cursor: default;
+}
+button:hover {
+  color: black;
+  outline: 0.05em solid grey;
+  z-index: 3;
+}
